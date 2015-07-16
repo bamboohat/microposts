@@ -1,0 +1,27 @@
+        <%= form_for(@user) do |f| %>
+          <%= render 'shared/error_messages', object: f.object %><!-- ここを追加 -->
+        
+          <%= f.label :name %>
+          <%= f.text_field :name %>
+        
+          <%= f.label :email %>
+          <%= f.text_field :email %>
+
+          <%= f.label :location %>
+          <%= f.text_field :location %>
+
+          <%= f.label :password %>
+          <%= f.text_field :password %>
+        
+          <%= f.label :password_confirmation, "Confirmation" %>
+          <%= f.text_field :password_confirmation %>
+
+          <div class="text-center btn-group">
+          <%= f.submit @button_title, class: "btn btn-large btn-primary" %>
+          </div>
+          <% if controller.action_name == 'edit' then %>
+            <div class="btn-group">
+            <%= link_to 'Retrun to my page', user_path(current_user), class: "btn btn-large btn-primary" %>
+            </div>
+          <% end %>
+        <% end %>
