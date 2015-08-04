@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       #get :followings, :followers
       get '/:id/followings', to: 'users#followings', as: 'followings'
       get '/:id/followers', to: 'users#followers', as: 'followers'
-    end  end
+    end  
+  end
     
 end
