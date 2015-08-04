@@ -9,10 +9,24 @@
     </aside>
     <div class="col-md-8">
       <%= render 'follow_form' if logged_in? %>
-      <% if @user.microposts.any? %>
+      <% if @user.microposts.any? && @method == 'show' %>
         <h3>Microspots (<%= @user.microposts.count %>)</h3>
         <ol class="microposts">
             <%= render @microposts %>
+        </ol>
+        
+      <% elsif @method == 'followings' %>
+        <% #@followings = @user.following_users %>
+        <h3>Followings (<%= @followings.count %>)</h3>
+        <ol class="microposts">
+          <%= render partial: 'relationships/relation', collection: @followings, as: :follow %>
+        </ol>
+        
+      <% elsif @method == 'followers' %>
+        <% #@followers = @user.followed_users %>
+        <h3>Followers (<%= @followers.count %>)</h3>
+        <ol class="microposts">
+          <%= render partial: 'relationships/relation', collection: @followers, as: :follow %>
         </ol>
       <% end %>
     </div>

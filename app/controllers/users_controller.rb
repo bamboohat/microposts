@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   
   def show
+    @method = __method__.to_s
     @user = User.find(params[:id])
     @microposts = @user.microposts
   end
@@ -17,6 +18,20 @@ class UsersController < ApplicationController
     else
       render 'new'
     end
+  end
+  
+  def followings
+    @method = __method__.to_s
+    @user = User.find(params[:id])
+    @followings = @user.following_users
+    render 'users/show'
+  end
+  
+  def followers
+    @method = __method__.to_s
+    @user = User.find(params[:id])
+    @followers = @user.followed_users
+    render 'users/show'
   end
     
   private
