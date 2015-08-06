@@ -4,6 +4,12 @@ class UsersController < ApplicationController
     @method = __method__.to_s
     @user = User.find(params[:id])
     @microposts = @user.microposts
+    
+    respond_to do |format|
+      format.html
+      format.csv { send_data @user.microposts.to_csv, filename: "microposts.txt" }
+    end
+      
   end
   
   def new

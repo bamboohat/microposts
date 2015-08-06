@@ -8,6 +8,7 @@
       </section>
       <%= link_to "Followings", followings_users_path %>
       <%= link_to "Followers", followers_users_path %>
+      <%= link_to "Download", user_path(format: 'csv') %>
     </aside>
     <div class="col-md-8">
       <%= render 'follow_form' if logged_in? %>
